@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Item from "../interfaces";
-// import axios from "axios";
 import useDebounce from "../hooks/useDebounce";
+import { Link } from "react-router-dom";
 
 function SearchUsers() {
   const [users, setAllUsers] = useState<Item[]>([]);
@@ -11,7 +11,7 @@ function SearchUsers() {
   const debouncedSearch = useDebounce(search, 500);
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchData(): Promise<void> {
       setLoading(true);
 
       const data = await fetch(
@@ -46,9 +46,9 @@ function SearchUsers() {
           <div className="ListItem" key={user.id}>
             <img className="UserAvatar" src={user.avatar_url} alt="avatar" />
             <p>{user.login}</p>
-            <a href={user.html_url}>
+            <Link to={`/users/${user.login}`}>
               <button className="UserDetailsBtn">User Details</button>
-            </a>
+            </Link>
           </div>
         ))}
       </div>

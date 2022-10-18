@@ -51,3 +51,11 @@ body {
 .UserDetailsBtn:hover {
   background-color: #a8dbe0;
 }
+.SingleUserWrapper {
+  display: flex;
+  padding: 40px;
+}
+.SingleUserAvatar {
+  border-radius: 50%;
+  height: 66%;
+}
