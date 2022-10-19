@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function SearchUsers() {
   const [users, setAllUsers] = useState<Item[]>([]);
   const [search, setSearch] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const debouncedSearch = useDebounce(search, 500);
 
@@ -31,6 +31,7 @@ function SearchUsers() {
 
   return (
     <div className="Wrapper">
+      <div className="Logo"></div>
       <div className="SearchWrapper">
         <input
           type="text"
