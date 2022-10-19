@@ -5,12 +5,11 @@ import { useParams } from "react-router-dom";
 function SingleUser(): JSX.Element {
   const [user, setUser] = useState<Item[]>([]);
 
-  console.log(useParams());
+  console.log("USE PARAMS:", useParams());
   const { login } = useParams();
 
   useEffect(() => {
     fetchItem();
-    console.log(login);
   }, []);
 
   const fetchItem: () => Promise<void> = async () => {
@@ -19,11 +18,11 @@ function SingleUser(): JSX.Element {
     );
     const item = await fetchItem.json();
     setUser(item.items);
-    console.log(item.items.login);
+    console.log("ITEMS:", item.items);
   };
 
   const single = user.find((single) => single.login === login);
-  console.log(single);
+  console.log("Single", single);
 
   return (
     <div className="SingleUserWrapper">
@@ -34,9 +33,13 @@ function SingleUser(): JSX.Element {
           alt="avatar"
         />
       </div>
-      <div>
+
+      <div className="BasicInfo">
         <h3>Username: {single?.login}</h3>
         <h3>UserID: {single?.id}</h3>
+        <a href={single?.html_url}>
+          <button>GitHub Account</button>
+        </a>
       </div>
     </div>
   );

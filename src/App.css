@@ -3,10 +3,20 @@ body {
   background: #a8dbe0;
   color: #123134;
 }
+.Logo {
+  background-image: url(../githublogo.png);
+  height: 200px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+.Wrapper {
+  padding: 40px 0;
+}
 .SearchWrapper {
   display: flex;
   justify-content: center;
-  padding: 100px;
+  padding: 50px 0;
 }
 .SearchInput {
   width: 40%;
@@ -53,9 +63,22 @@ body {
 }
 .SingleUserWrapper {
   display: flex;
-  padding: 40px;
+  padding: 40px 0;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.SingleUserWrapper button {
+  height: 40px;
+  width: 100%;
+  cursor: pointer;
+  font-weight: bold;
+  border: 2px solid #123134;
+  transition: background-color 0.5s;
+}
+.SingleUserWrapper button:hover {
+  background-color: #a9dbe0;
 }
 .SingleUserAvatar {
   border-radius: 50%;
-  height: 66%;
 }
