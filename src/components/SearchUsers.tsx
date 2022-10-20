@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Item from "../interfaces";
+import { Item } from "../interfaces";
 import useDebounce from "../hooks/useDebounce";
 import { Link } from "react-router-dom";
 
@@ -17,11 +17,12 @@ function SearchUsers() {
       const data = await fetch(
         `https://api.github.com/search/users?q=${debouncedSearch}`
       ).then((res) => res.json());
-      const allUsers = data?.items;
-      console.log(allUsers);
+      const allUsers: [] = data.items;
+      // console.log(allUsers);
       setAllUsers(allUsers);
       setLoading(false);
     }
+
     if (debouncedSearch) {
       fetchData();
     } else {
