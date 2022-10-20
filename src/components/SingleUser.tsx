@@ -3,43 +3,34 @@ import Item from "../interfaces";
 import { useParams } from "react-router-dom";
 
 function SingleUser(): JSX.Element {
-  const [user, setUser] = useState<Item[]>([]);
-
-  console.log("USE PARAMS:", useParams());
+  const [user, setUser] = useState<Item>();
   const { login } = useParams();
 
   useEffect(() => {
+    const fetchItem: () => Promise<void> = async () => {
+      const fetchItem = await fetch(`https://api.github.com/users/${login}`);
+      const item = await fetchItem.json();
+      setUser(item);
+    };
     fetchItem();
-  }, []);
+  }, [login]);
 
-  const fetchItem: () => Promise<void> = async () => {
-    const fetchItem = await fetch(
-      `https://api.github.com/search/users?q=${login}`
-    );
-    const item = await fetchItem.json();
-    setUser(item.items);
-    console.log("ITEMS:", item.items);
-  };
-
-  const single = user.find((single) => single.login === login);
-  console.log("Single", single);
+  console.log(user)
 
   return (
     <div className="SingleUserWrapper">
-      <div>
-        <img
-          className="SingleUserAvatar"
-          src={single?.avatar_url}
-          alt="avatar"
-        />
+      <div className="AvatarWrapper">
+        <img className="SingleUserAvatar" src={user?.avatar_url} alt="avatar" />
       </div>
-
       <div className="BasicInfo">
-        <h3>Username: {single?.login}</h3>
-        <h3>UserID: {single?.id}</h3>
-        <a href={single?.html_url}>
+        <h2>{user?.name}</h2>
+        <h4>{user?.login}</h4>
+        <h4>Bio: {user?.bio}</h4>
+        <a href={user?.html_url}>
           <button>GitHub Account</button>
         </a>
+        <p>Folowers: {user?.followers} | Folowing: {user?.following}</p>
+        {user?.company && (<p>Company: {user?.company}</p>)}
       </div>
     </div>
   );

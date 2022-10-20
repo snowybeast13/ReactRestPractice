@@ -79,6 +79,10 @@ body {
 .SingleUserWrapper button:hover {
   background-color: #a9dbe0;
 }
+.AvatarWrapper {
+  height: 300px;
+}
 .SingleUserAvatar {
   border-radius: 50%;
+  height: 100%;
 }

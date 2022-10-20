@@ -1,7 +1,7 @@
 export interface Pokedex {
   total_count: number;
   incomplete_results: boolean;
-  items: Item[];
+  items: Item;
 }
 
 export interface Item {
@@ -23,7 +23,19 @@ export interface Item {
   received_events_url: string;
   type: string;
   site_admin: boolean;
-  score: number;
+  name: string;
+  company: string;
+  blog: string;
+  location: null;
+  email: null;
+  hireable: null;
+  bio: string;
+  twitter_username: null;
+  public_repos: number;
+  public_gists: number;
+  followers: number;
+  following: number;
+  created_at: Date;
+  updated_at: Date;
 }
-
 export default Item;
