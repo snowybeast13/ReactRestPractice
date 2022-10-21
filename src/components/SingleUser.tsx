@@ -3,7 +3,7 @@ import { Item, Repositorium } from "../interfaces";
 import { useParams } from "react-router-dom";
 
 function SingleUser(): JSX.Element {
-  const [user, setUser] = useState<Item>();
+  const [user, setUser] = useState<Item | undefined>();
   const [repoList, setRepoList] = useState<Repositorium[]>([]);
   const { login } = useParams<string>();
 
@@ -18,6 +18,9 @@ function SingleUser(): JSX.Element {
     };
     fetchItem();
   }, [login]);
+
+  console.log(user)
+  console.log(repoList);
 
   return (
     <div className="SingleUserWrapper">

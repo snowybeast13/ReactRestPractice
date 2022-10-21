@@ -18,7 +18,7 @@ function SearchUsers() {
         `https://api.github.com/search/users?q=${debouncedSearch}`
       ).then((res) => res.json());
       const allUsers: [] = data.items;
-      // console.log(allUsers);
+      console.log(allUsers);
       setAllUsers(allUsers);
       setLoading(false);
     }
